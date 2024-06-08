@@ -16,4 +16,11 @@ export class LazyImageComponent {
     required: true
   })
   public alt!: string;
+
+  public isLoading: boolean = true;
+
+  public onLoad(): void {
+    console.log('Image loaded');
+    this.isLoading = false;
+  }
 }
