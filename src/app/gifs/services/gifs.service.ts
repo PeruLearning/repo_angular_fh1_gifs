@@ -38,6 +38,16 @@ export class GifsService {
       });
   }
 
+  public deleteTag(tag: string): void {
+    this._tagsHistory = this._tagsHistory.filter(oldTag => oldTag !== tag);
+    this.saveLocalStorage();
+
+    if (this._tagsHistory.length > 0)
+      this.searchTag(this._tagsHistory[0]);
+    else
+      this.gifList = [];
+  }
+
   private organizeHistory(tag: string): void {
     tag = tag.toLowerCase();
 
